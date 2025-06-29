@@ -1,6 +1,6 @@
-import { Search, TrendingUp, Zap, Shield } from 'lucide-react';
+import { TrendingUp, Zap, Shield } from 'lucide-react';
 import { Button } from './ui/button';
-import { Input } from './ui/input';
+import AISearchBar from './AISearchBar';
 
 export default function HeroSection() {
   return (
@@ -17,19 +17,12 @@ export default function HeroSection() {
             The modern way to discover amazing deals and sell your items with AI-powered search
           </p>
           
-          {/* Search Bar */}
+          {/* AI Search Bar */}
           <div className="max-w-2xl mx-auto mb-12">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-6 w-6" />
-              <Input
-                type="text"
-                placeholder="Try 'iPhone 14', 'vintage furniture', or 'mountain bike'..."
-                className="pl-12 pr-4 py-4 w-full rounded-xl text-lg bg-white text-gray-900 border-0 focus:ring-2 focus:ring-[#08BDBA] shadow-lg"
-              />
-              <Button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-brand-secondary hover:bg-brand-secondary hover:opacity-90 text-white px-6 py-2 rounded-lg">
-                Search
-              </Button>
-            </div>
+            <AISearchBar 
+              size="large"
+              placeholder="Try 'iPhone 14', 'vintage furniture', or 'reliable family car under €15,000'..."
+            />
           </div>
           
           {/* Feature Pills */}

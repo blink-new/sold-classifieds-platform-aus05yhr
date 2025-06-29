@@ -1,6 +1,7 @@
-import { Search, Plus, User, Menu, Heart } from 'lucide-react';
+import { Plus, User, Menu, Heart } from 'lucide-react';
 import { Button } from './ui/button';
-import { Input } from './ui/input';
+import AISearchBar from './AISearchBar';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   return (
@@ -9,15 +10,17 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-8">
-            <h1 className="text-3xl font-bold brand-primary tracking-tight">
-              SOLD
-            </h1>
+            <Link to="/">
+              <h1 className="text-3xl font-bold brand-primary tracking-tight cursor-pointer">
+                SOLD
+              </h1>
+            </Link>
             
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-6">
-              <a href="#" className="text-gray-600 hover:text-[#0052CC] font-medium transition-colors">
+              <Link to="/search" className="text-gray-600 hover:text-[#0052CC] font-medium transition-colors">
                 Browse
-              </a>
+              </Link>
               <a href="#" className="text-gray-600 hover:text-[#0052CC] font-medium transition-colors">
                 Categories
               </a>
@@ -29,21 +32,17 @@ export default function Header() {
           
           {/* Search Bar - Desktop */}
           <div className="hidden lg:flex flex-1 max-w-2xl mx-8">
-            <div className="relative w-full">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-              <Input
-                type="text"
-                placeholder="Search for anything..."
-                className="pl-10 pr-4 py-3 w-full rounded-lg border-gray-300 focus:border-[#0052CC] focus:ring-[#0052CC] text-lg"
-              />
-            </div>
+            <AISearchBar 
+              placeholder="Search for anything..."
+              className="w-full"
+            />
           </div>
           
           {/* Right Actions */}
           <div className="flex items-center space-x-3">
             {/* Mobile Search */}
             <Button variant="ghost" size="icon" className="lg:hidden">
-              <Search className="h-5 w-5" />
+              <div className="h-5 w-5 flex items-center justify-center">🔍</div>
             </Button>
             
             {/* Favorites */}
@@ -52,16 +51,20 @@ export default function Header() {
             </Button>
             
             {/* Post Ad Button */}
-            <Button className="bg-brand-secondary hover:bg-brand-secondary hover:opacity-90 text-white font-medium px-4 py-2 rounded-lg hidden md:flex items-center space-x-2">
-              <Plus className="h-4 w-4" />
-              <span>Post Ad</span>
-            </Button>
+            <Link to="/create">
+              <Button className="bg-brand-secondary hover:bg-brand-secondary hover:opacity-90 text-white font-medium px-4 py-2 rounded-lg hidden md:flex items-center space-x-2">
+                <Plus className="h-4 w-4" />
+                <span>Post Ad</span>
+              </Button>
+            </Link>
             
             {/* User Account */}
-            <Button variant="outline" className="hidden md:flex items-center space-x-2 border-gray-300">
-              <User className="h-4 w-4" />
-              <span>Sign In</span>
-            </Button>
+            <Link to="/dashboard">
+              <Button variant="outline" className="hidden md:flex items-center space-x-2 border-gray-300">
+                <User className="h-4 w-4" />
+                <span>Dashboard</span>
+              </Button>
+            </Link>
             
             {/* Mobile Menu */}
             <Button variant="ghost" size="icon" className="md:hidden">
@@ -72,14 +75,10 @@ export default function Header() {
         
         {/* Mobile Search Bar */}
         <div className="lg:hidden mt-4">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
-            <Input
-              type="text"
-              placeholder="Search for anything..."
-              className="pl-10 pr-4 py-3 w-full rounded-lg border-gray-300 focus:border-[#0052CC] focus:ring-[#0052CC]"
-            />
-          </div>
+          <AISearchBar 
+            placeholder="Search for anything..."
+            className="w-full"
+          />
         </div>
       </div>
     </header>
