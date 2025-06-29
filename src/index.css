@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* SOLD Brand Colors */
+    --brand-bg: #F8F9FA;
+    --brand-primary: #0052CC;
+    --brand-secondary: #08BDBA;
+    --brand-text: #212529;
+    --brand-text-light: #6B7280;
+    
+    /* ShadCN Variables */
+    --background: 248 249 250;
+    --foreground: 212 212 212;
+    --card: 0 0% 100%;
+    --card-foreground: var(--brand-text);
+    --popover: 0 0% 100%;
+    --popover-foreground: var(--brand-text);
+    --primary: 220 92% 42%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 179 77% 39%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: var(--brand-bg);
+    --muted-foreground: var(--brand-text-light);
+    --accent: var(--brand-bg);
+    --accent-foreground: var(--brand-text);
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: var(--brand-primary);
+    --radius: 8px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-[#F8F9FA] text-[#212529] font-sans;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-[#0052CC];
+  }
+  
+  .brand-primary {
+    color: #0052CC;
+  }
+  
+  .brand-secondary {
+    color: #08BDBA;
+  }
+  
+  .bg-brand-primary {
+    background-color: #0052CC;
+  }
+  
+  .bg-brand-secondary {
+    background-color: #08BDBA;
+  }
+  
+  .border-brand-primary {
+    border-color: #0052CC;
+  }
+  
+  .hover\:bg-brand-primary:hover {
+    background-color: #003d99;
+  }
+  
+  .hover\:bg-brand-secondary:hover {
+    background-color: #069a97;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .card-shadow {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+  
+  .card-shadow-hover {
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  
+  .card-shadow-hover:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+}
